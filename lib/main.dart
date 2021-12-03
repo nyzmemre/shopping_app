@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'utils/constants/texts/headers.dart';
 import 'screens/homepage.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class ShoppingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Shopping App",
+      title: appName,
       home: HomePage(),
     );
   }

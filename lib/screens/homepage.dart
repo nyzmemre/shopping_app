@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/utils/components/grey_container.dart';
 import 'package:shopping_app/utils/my_widgets/dot_point.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,7 +9,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: DotPoint(),
+        child: MyContainer(
+          child: Text("Merhaba"),
+        ),
       ),
     );
   }
