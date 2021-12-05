@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/utils/constants/my_theme.dart';
 
+import 'utils/constants/my_theme.dart';
+import 'utils/constants/routes/route_map.dart';
 import 'utils/constants/texts/headers.dart';
-import 'screens/homepage.dart';
 
 void main() {
   runApp(ShoppingApp());
@@ -18,7 +18,8 @@ class ShoppingApp extends StatelessWidget {
       theme: theme,
       debugShowCheckedModeBanner: false,
       title: appName,
-      home: HomePage(),
+      //home: HomePage(),
+      onGenerateRoute: Routes.createRoute,
     );
   }
 }

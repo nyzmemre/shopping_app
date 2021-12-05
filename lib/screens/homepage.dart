@@ -7,6 +7,7 @@ import '../utils/constants/texts/headers.dart';
 import '../utils/constants/texts/subtitles.dart';
 import '../utils/my_widgets/product_info.dart';
 import '../utils/my_widgets/homepage_top_texts.dart';
+import '../utils/constants/routes/route_texts.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -25,10 +26,10 @@ class HomePage extends StatelessWidget {
             HomePageTopTexts(),
             context.fifteenSizedBox,
             productLists(context, _oliveOilData.oliveOilList, oliveOil,
-                _oliveOilData.oliveOilList.length),
+                _oliveOilData.oliveOilList.length, kRouteOliveOils),
             context.fifteenSizedBox,
             productLists(context, _oliveOilData.bestOliveOils, bestSales,
-                _oliveOilData.bestOliveOils.length),
+                _oliveOilData.bestOliveOils.length,kRouteBestSales),
           ],
         ),
       ),
@@ -36,11 +37,11 @@ class HomePage extends StatelessWidget {
   }
 
   Widget productLists(BuildContext context, List<Product> list,
-      String productName, int productCounter) {
+      String productName, int productCounter, String showAllPageName) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        productHeader(context, productName, productCounter),
+        productHeader(context, productName, productCounter,showAllPageName),
         SizedBox(
           height: context.height * 0.3,
           child: ListView.builder(
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget productHeader(
-      BuildContext context, String productName, int productCounter) {
+      BuildContext context, String productName, int productCounter, String showAllPageName) {
     return Container(
       height: context.height * 0.03,
       width: context.height * 0.3 * 2,
@@ -80,7 +81,7 @@ class HomePage extends StatelessWidget {
             bottom: 0,
             right: 1,
             child: TextButton(
-                onPressed: () {},
+                onPressed: ()=>Navigator.pushNamed(context, showAllPageName),
                 child: Text(
                   showAll,
                   style: Theme.of(context).textTheme.caption,
