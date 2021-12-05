@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/models/product.dart';
-import 'package:shopping_app/utils/components/my_container.dart';
-import 'package:shopping_app/utils/constants/extensions/extensions.dart';
+
+import '../components/my_container.dart';
+import '../constants/extensions/extensions.dart';
+import '../../models/product.dart';
 
 class ProductInfo extends StatelessWidget {
   final List<Product> list;
   final int index;
-  const ProductInfo({Key? key,required this.list, required this.index}) : super(key: key);
+  final VoidCallback? onTap;
+  const ProductInfo({Key? key,required this.list, required this.index, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +18,7 @@ class ProductInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MyContainer(
+            onTap: onTap ?? (){},
             child: Image.asset(list[index].imgURL[0]),
           ),
           context.fifteenSizedBox,
