@@ -16,7 +16,7 @@ class MyPageViewDot extends StatefulWidget {
 
 class _MyPageViewDotState extends State<MyPageViewDot> {
   PageController _pageController = PageController();
-  double currentPage = 0;
+  int currentPage = 0;
   bool _isSelected = false;
 
   @override
@@ -24,7 +24,8 @@ class _MyPageViewDotState extends State<MyPageViewDot> {
     _pageController.addListener(() {
       setState(() {
         if (_pageController.page != null)
-          currentPage = _pageController.page!;
+
+          currentPage = _pageController.page!.round();
 
       });
     });
@@ -33,7 +34,7 @@ class _MyPageViewDotState extends State<MyPageViewDot> {
 
   @override
   Widget build(BuildContext context) {
-    print(currentPage);
+   print(currentPage);
     return Column(
       children: [
         Expanded(
@@ -56,11 +57,13 @@ class _MyPageViewDotState extends State<MyPageViewDot> {
               scrollDirection: Axis.horizontal,
               itemCount: widget.data.oliveOilList[widget.index].imgURL.length,
               itemBuilder: (context, int i) {
-                print(i);
+              //  print(i);
                 if (currentPage != i) {
                     _isSelected =false;
                 }else _isSelected=true;
-                return Container(
+                return AnimatedContainer(
+
+                  duration: Duration(milliseconds: currentPage),
                   width: 50,
                   height: 8,
                   //padding: EdgeInsets.symmetric(horizontal: 10),
